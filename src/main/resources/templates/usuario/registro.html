@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Login Fide News</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="/css/style.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        
+        <div class="form-body">
+        <h2>Registro del nuevo Lector</h2>
+        <br>
+        <a th:href="@{/}"><input type="button" value="Regresar"></a>
+        <br>
+        <hr>
+        <form th:action="@{/usuario/guardar}"
+              method="post"
+              th:object="${usuario}">
+            <input type="hidden" name="idUsuario" th:field="*{idUsuario}"/>
+            <br>
+            <label for="nombre">Nombre de usuario:</label>
+            <input type="text" name="nombre" th:field="*{nombre}"/>
+            <br>
+            <label for="email">Correo Electronico:</label>
+            <input type="email" name="email" th:field="*{email}"/>
+            <br>
+            <label for="contraseña">Detalle:</label>
+            <input type="password" name="contraseña" th:field="*{contraseña}"/>
+            <br>
+            <label for="region">Region o Pais:</label>
+            <input type="text" name="region" th:field="*{region}"/>
+            <br>
+            <label for="edad">Edad:</label>
+            <input type="number" name="edad" th:field="*{edad}"/>
+            <br>
+            <hr>
+            <br>
+            <input type="submit" name="guardar" value="Guardar"/>
+            <br>
+        </form>
+        </div>
+    </body>
+</html>

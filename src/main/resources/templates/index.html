@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="/css/style.css" rel="stylesheet" type="text/css"/>
+        <title>Registro Fide News</title>
+
+
+    </head>
+    <body>
+
+        <div class="form-body" >
+            <p class="text">Bienvenido de vuelta Lector</p>
+            <form class="login-form">
+
+                <label for="email">Email o correo electrónico:</label>
+                <input type="text" name="email"/>
+                <br>
+                <label for="contraseña">Contraseña:</label>
+                <input type="password" name="contraseña"/>
+                <br>
+                <br>
+                <hr>
+                <br>
+                <a th:href="@{/usuario/nuevo}"><input type="button" value="Nuevo Usuario"></a>
+                <br>
+                
+                <hr>
+            </form>
+        </div>
+
+        <br>
+        <br>
+        <br>
+        <div>
+        <a>Lista de usuarios registrados</a>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Nombre de Usuario</th>
+                    <th>Email</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="usuario : ${usuarios}">
+                    <td th:text="${usuario.nombre}"></td>
+                    <td th:text="${usuario.email}"></td>
+
+
+
+                </tr>
+            </tbody>
+        </table>
+        </div>
+    </body>
+</html>
