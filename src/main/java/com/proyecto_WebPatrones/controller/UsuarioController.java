@@ -56,5 +56,7 @@ public class UsuarioController {
     public String eliminarUsuario(Usuario usuario){
         usuarioservice.delete(usuario);
         return "redirect:/";
-    }    
+    }  
+    
+    
 }

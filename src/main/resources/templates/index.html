@@ -1,21 +1,51 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="/css/style.css" rel="stylesheet" type="text/css"/>
-        <title>Registro Fide News</title>
+        
+
+        <title>Inicio Fide News</title>
 
 
     </head>
     <body>
+        
+        <header>
+            
+        </header>
+        
+        
+        
+        <div class="fide">
 
+            <img src="/img/fide News.png"  width="400"/>
+            <div/>
+
+            
+       
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <div>
+        <div class="tabla">
         <div class="form-body" >
+            
+            
             <p class="text">Bienvenido de vuelta Lector</p>
             <form class="login-form">
 
@@ -28,7 +58,12 @@ and open the template in the editor.
                 <br>
                 <hr>
                 <br>
+                
                 <a th:href="@{/usuario/nuevo}"><input type="button" value="Nuevo Usuario"></a>
+                
+                
+                
+                 
                 <br>
                 
                 <hr>
@@ -59,5 +94,10 @@ and open the template in the editor.
             </tbody>
         </table>
         </div>
+        
+        <div class="vamos">
+                    <a th:href="@{/noticias_nacionales/noticiasNacionales}">
+                           <img src="/img/Vamos.png" alt="rfff" width="250"/>
+                     <div/>
     </body>
 </html>

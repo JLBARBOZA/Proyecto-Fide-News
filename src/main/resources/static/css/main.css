@@ -1,0 +1,74 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header{
+    background-color: #E2413E;
+    
+    font-size: 30px;
+    height: 120px;
+
+
+}
+.fide{
+    width: 70%;
+    margin: 0%;
+    width: 10px;
+    size: 30px;
+    height: 5px;
+    right: -20px;
+    position: relative;
+    top: -100px
+}
+
+.nacional{
+    
+    margin: 0%;
+    width: 10px;
+    size: 30px;
+    height: 5px;
+    right: -60px;
+    position: relative;
+    top: 70px
+    
+}
+
+.placeholder1{
+    
+    margin: 0%;
+   
+    height: 5px;
+    right: -690px;
+    position: relative;
+    top: -90px
+    
+   
+    
+}
+
+.placeholder2{
+    
+    margin: 0%;
+   
+    height: 5px;
+    right: 55px;
+    position: relative;
+    top: -90px
+    
+   
+    
+}
+
+.opacity{
+ opacity:0;
+}
+
+
+body{
+
+    background-color: #43A39F;
+
+}
