@@ -20,11 +20,14 @@ and open the template in the editor.
         <hr>
         <form th:action="@{/noticias_internacionales/guardar}"
               method="post"
-              th:object="${nacionales}">
-            <input type="hidden" name="id_notinacional" th:field="*{id_notinacional}"/>
+              th:object="${internacionales}">
+            <input type="hidden" name="idNotiinternacional" th:field="*{idNotiinternacional}"/>
             
             <label for="nombre">Nombre:</label>
             <input type="text" name="nombre" th:field="*{nombre}"/>
+            <br>
+            <label for="resumen">Resumen:</label>
+            <input type="resumen" name="resumen" th:field="*{resumen}"/>
             <br>
             <label for="noticia">Noticia:</label>
             <input type="text" name="noticia" th:field="*{noticia}"/>

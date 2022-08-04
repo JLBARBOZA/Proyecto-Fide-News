@@ -14,7 +14,7 @@ import java.util.List;
  */
 public interface InternacionalesService {
     
-    public List<Internacionales> getInternacionaless();
+    public List<Internacionales> getInternacionales();
     
     public void save(Internacionales internacionales);
     

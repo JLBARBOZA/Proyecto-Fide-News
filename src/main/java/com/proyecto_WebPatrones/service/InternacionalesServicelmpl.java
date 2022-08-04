@@ -20,32 +20,32 @@ import org.springframework.transaction.annotation.Transactional;
 public class InternacionalesServicelmpl implements InternacionalesService {
     
     @Autowired
-    private InternacionalesDao nacionalesDao;
+    private InternacionalesDao internacionalesDao;
     
 
 
     @Override
     @Transactional(readOnly = true)
-    public List<Internacionales> getInternacionaless() {
-        return (List<Internacionales>) nacionalesDao.findAll();
+    public List<Internacionales> getInternacionales() {
+        return (List<Internacionales>) internacionalesDao.findAll();
     }
 
     @Override
     @Transactional
-    public void save(Internacionales nacionales) {
-        nacionalesDao.save(nacionales);
+    public void save(Internacionales internacionales) {
+        internacionalesDao.save(internacionales);
     }
 
     @Override
     @Transactional
-    public void delete(Internacionales nacionales) {
-        nacionalesDao.delete(nacionales);
+    public void delete(Internacionales internacionales) {
+        internacionalesDao.delete(internacionales);
     }
 
     @Override
     @Transactional(readOnly = true)
-    public Internacionales getInternacionales(Internacionales nacionales) {
-        return nacionalesDao.findById(nacionales.getIdNotiinternacionales()).orElse(null);
+    public Internacionales getInternacionales(Internacionales internacionales) {
+        return internacionalesDao.findById(internacionales.getIdNotiinternacional()).orElse(null);
     }
     
 }

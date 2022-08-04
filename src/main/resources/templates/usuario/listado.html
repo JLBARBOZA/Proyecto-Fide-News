@@ -9,9 +9,11 @@
     </head>
     <body>
         
+        <header th:replace="layout/plantilla :: header"/>
         <h2>Lista de usuarios registrados</h2>
         <div>
         <a>Usuarios registrados</a>
+        <a th:href="@{/usuario/nuevo}">Agregar un usuario</a>
         <table border="1">
             <thead>
                 <tr>
@@ -19,6 +21,8 @@
                     <th>Email</th>
                     <th>Region</th>
                     <th>Edad</th>
+                    <th>Eliminar</th>
+                    <th>Modificar</th>
                     
                 </tr>
             </thead>
@@ -28,15 +32,14 @@
                     <td th:text="${usuario.email}"></td>
                     <td th:text="${usuario.region}"></td>
                     <td th:text="${usuario.edad}"></td>
+                    
+                    <td><a th:href="@{/usuario/eliminar/}+${usuario.idUsuario}">Eliminar</a></td>
+                    <td><a th:href="@{/usuario/modificar/}+${usuario.idUsuario}">Modificar</a></td>
 
                 </tr>
             </tbody>
         </table>
         </div>
         
-        <div class="vamos">
-                    <a th:href="@{/noticias_nacionales/noticiasNacionales}">
-                           <img src="/img/Vamos.png" alt="rfff" width="250"/>
-                     </div>
     </body>
 </html>

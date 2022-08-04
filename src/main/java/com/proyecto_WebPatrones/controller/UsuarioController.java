@@ -26,36 +26,36 @@ public class UsuarioController {
     @Autowired
     private UsuarioService usuarioservice;
     
-    @GetMapping("/")
+    @GetMapping("/usuario/listado")
     public String inicio(Model model){
 
         var usuarios = usuarioservice.getUsuarios();
         
         model.addAttribute("usuarios",usuarios);
-        return "index";
+        return "/usuario/listado";
     }
     @GetMapping("/usuario/nuevo")
     public String nuevoUsuario(Usuario usuario){
-        return "usuario/registro";
+        return "usuario/modificar";
     }
     
     @PostMapping("/usuario/guardar")
     public String guardarUsuario(Usuario usuario){
         usuarioservice.save(usuario);
-        return "redirect:/";
+        return "redirect:/usuario/listado";
     }
     
-    @GetMapping("/usuario/registro/{idUsuario}")
+    @GetMapping("/usuario/modificar/{idUsuario}")
     public String modificarUsuario(Usuario usuario, Model model){
         usuario=usuarioservice.getUsuario(usuario);
         model.addAttribute("usuario",usuario);
-        return "usuario/registro";
+        return "usuario/modificar";
     }
     
     @GetMapping("/usuario/eliminar/{idUsuario}")
     public String eliminarUsuario(Usuario usuario){
         usuarioservice.delete(usuario);
-        return "redirect:/";
+        return "redirect:/usuario/listado";
     }  
     
     

@@ -25,16 +25,18 @@ and open the template in the editor.
                     <th>Titular</th>
                     <th>Resumen de la Noticia</th>
                     <th>Noticia</th>
+                    <th>Eliminar</th>
+                    <th>Modificar</th>
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="nacionales : ${nacionales}">
-                    <td th:text="${nacionales.nombre}"></td>
-                    <td th:text="${nacionales.resumen}"></td>
-                    <td th:text="${nacionales.noticia}"></td>
+                <tr th:each="internacionales : ${internacionales}">
+                    <td th:text="${internacionales.nombre}"></td>
+                    <td th:text="${internacionales.resumen}"></td>
+                    <td th:text="${internacionales.noticia}"></td>
 
-                    <td><a th:href="@{/noticias_internacionales/eliminar/}+${nacionales.id_notiinternacional}">Eliminar Noticia</a></td>
-                    <td><a th:href="@{/noticias_internacionales/modificar/}+${nacionales.id_notiinternacional}">Modificar Noticia</a></td>
+                    <td><a th:href="@{/noticias_internacionales/eliminar/}+${internacionales.idNotiinternacional}">Eliminar</a></td>
+                    <td><a th:href="@{/noticias_internacionales/modificar/}+${internacionales.idNotiinternacional}">Modificar</a></td>
                 </tr>
             </tbody>
         </table>

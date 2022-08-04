@@ -29,9 +29,9 @@ public class InternacionalesController {
     @GetMapping("/noticias_internacionales/listado")
     public String inicio(Model model){
 
-        var internacionaless = internacionalesservice.getInternacionaless();
+        var internacionales = internacionalesservice.getInternacionales();
         
-        model.addAttribute("internacionaless",internacionaless);
+        model.addAttribute("internacionales",internacionales);
         return "noticias_internacionales/listado";
     }
     @GetMapping("/noticias_internacionales/nuevo")
@@ -45,14 +45,14 @@ public class InternacionalesController {
         return "redirect:/noticias_internacionales/listado";
     }
     
-    @GetMapping("/noticias_internacionales/modificar/{id_notiinternacional}")
+    @GetMapping("/noticias_internacionales/modificar/{idNotiinternacional}")
     public String modificarInternacionales(Internacionales internacionales, Model model){
         internacionales=internacionalesservice.getInternacionales(internacionales);
         model.addAttribute("internacionales",internacionales);
         return "internacionales/modificar";
     }
     
-    @GetMapping("/noticias_internacionales/eliminar/{id_notiinterinternacionales}")
+    @GetMapping("/noticias_internacionales/eliminar/{idNotiinternacional}")
     public String eliminarInternacionales(Internacionales internacionales){
         internacionalesservice.delete(internacionales);
         return "redirect:/noticias_internacionales/listado";
