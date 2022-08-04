@@ -1,41 +1,21 @@
 <!DOCTYPE html>
 
-<html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="/css/style.css" rel="stylesheet" type="text/css"/>
-        
-
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://thymeleaf.org/extras/spring-security">
+    <head th:replace="layout/plantilla :: head">
+        <link href="/css/style.css" rel="stylesheet" type="text/css"/>        
         <title>Inicio Fide News</title>
-
-
     </head>
+    
     <body>
         
-        <header>
-            
-        </header>
-        
-        
-        
+
         <div class="fide">
 
             <img src="/img/fide News.png"  width="400"/>
             <div/>
 
-            
-       
-
-        
-        
-        
-        
-        
-        
-        
-        
-        
         
         <div>
         <div class="tabla">
@@ -56,10 +36,7 @@
                 <br>
                 
                 <a th:href="@{/usuario/nuevo}"><input type="button" value="Nuevo Usuario"></a>
-                
-                
-                
-                 
+
                 <br>
                 
                 <hr>
@@ -69,31 +46,10 @@
         <br>
         <br>
         <br>
-        <div>
-        <a>Lista de usuarios registrados</a>
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>Nombre de Usuario</th>
-                    <th>Email</th>
-
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="usuario : ${usuarios}">
-                    <td th:text="${usuario.nombre}"></td>
-                    <td th:text="${usuario.email}"></td>
-
-
-
-                </tr>
-            </tbody>
-        </table>
-        </div>
         
         <div class="vamos">
                     <a th:href="@{/noticias_nacionales/noticiasNacionales}">
                            <img src="/img/Vamos.png" alt="rfff" width="250"/>
-                     <div/>
+                     </div>
     </body>
 </html>

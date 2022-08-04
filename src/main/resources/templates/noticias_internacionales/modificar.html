@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://thymeleaf.org/extras/spring-security">
+    <head th:replace="layout/plantilla :: head">
+        <title>Fide News</title>
+    </head>
+    <body>
+        
+        <header th:replace="layout/plantilla :: header"/>
+        <div class="contenido">
+        <h2>Datos de la noticia Internacional</h2>
+        <a th:href="@{/noticias_internacionales/listado}">Regresar</a>
+        
+        <hr>
+        <form th:action="@{/noticias_internacionales/guardar}"
+              method="post"
+              th:object="${nacionales}">
+            <input type="hidden" name="id_notinacional" th:field="*{id_notinacional}"/>
+            
+            <label for="nombre">Nombre:</label>
+            <input type="text" name="nombre" th:field="*{nombre}"/>
+            <br>
+            <label for="noticia">Noticia:</label>
+            <input type="text" name="noticia" th:field="*{noticia}"/>
+            
+            <hr>
+            <input type="submit" name="guardar" value="Guardar"/>
+        </form>
+        </div>
+        
+    </body>
+</html>

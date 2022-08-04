@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 
-<html>
-    <head>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://thymeleaf.org/extras/spring-security">
+    <head th:replace="layout/plantilla :: head">
         <title>Noticias Nacionales</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +11,7 @@
     </head>
     <body>
 
-        <header>
+        <header th:replace="layout/plantilla :: header">
 
         </header>
 
@@ -18,12 +20,12 @@
         <div class="fide">
 
             <img src="/img/fide News.png"  width="400"/>
-            <div/>
+            </div>
 
             <div class="nacional">
 
                 <img src="/img/Nacional.png" alt="" width="1400"/>
-                <div/>
+                </div>
 
 
                 <div class="opacity">
@@ -31,8 +33,8 @@
                         <a th:href="@{/noticias_internacionales/noticiasInternacionales}">
                             <img src="/img/PlaceHolder.png" alt="" width="750"/>
                             <a/>
-                            <div/>
-                            <div/>
+                            </div>
+                            </div>
 
 
                         </body>
