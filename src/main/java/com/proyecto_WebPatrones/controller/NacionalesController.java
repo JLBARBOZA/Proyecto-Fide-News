@@ -29,9 +29,9 @@ public class NacionalesController {
     @GetMapping("/noticias_nacionales/listado")
     public String inicio(Model model){
 
-        var nacionaless = nacionalesservice.getNacionaless();
+        var nacionales = nacionalesservice.getNacionales();
         
-        model.addAttribute("nacionaless",nacionaless);
+        model.addAttribute("nacionales",nacionales);
         return "noticias_nacionales/listado";
     }
     @GetMapping("/noticias_nacionales/nuevo")
@@ -45,14 +45,14 @@ public class NacionalesController {
         return "redirect:/noticias_nacionales/listado";
     }
     
-    @GetMapping("/noticias_nacionales/modificar/{id_Notinacional}")
+    @GetMapping("/noticias_nacionales/modificar/{idNotinacional}")
     public String modificarNacionales(Nacionales nacionales, Model model){
         nacionales=nacionalesservice.getNacionales(nacionales);
         model.addAttribute("nacionales",nacionales);
         return "noticias_nacionales/modificar";
     }
     
-    @GetMapping("/noticias_nacionales/eliminar/{id_Notinacionales}")
+    @GetMapping("/noticias_nacionales/eliminar/{idNotinacional}")
     public String eliminarNacionales(Nacionales nacionales){
         nacionalesservice.delete(nacionales);
         return "redirect:/noticias_nacionales/listado";

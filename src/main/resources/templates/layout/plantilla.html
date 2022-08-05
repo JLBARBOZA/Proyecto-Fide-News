@@ -18,67 +18,68 @@ and open the template in the editor.
         <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
         <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
     </head>
-    
-        <body>
-        
+
+    <body>
+
         <header th:fragment="header" class="header">
-            <nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
-                <div class="container">
-                    
-            <a th:href="@{/}" class="navbar-brand">TechShop</a>
-            <button class="nav-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-            
-            <ul class="navbar-nav" sec:authorize="hasRole('ROLE_ADMIN')">
-                <li class="nav-item px-2">
-                    <a th:href="@{/usuario/listado}" class="nav-menu-link nav-link">Usuarios registrados</a>
-                </li>
-                
-                <li class="nav-item px-2">
-                    <a th:href="@{/noticias_nacionales/listado}" class="nav-menu-link nav-link">Noticias Nacionales</a>
-                </li>
-                
-                <li class="nav-item px-2">
-                    <a th:href="@{/noticias_internacionales/listado}" class="nav-menu-link nav-link">Noticias Internacionales</a>
-                </li>
-                
-            </ul>
-                <ul class="navbar-nav ml-auto" sec:authorize="hasRole('ROLE_USER')">
-                    <li class="nav-item mr-3">
-                        <a href="#" class="nav-link">
-                            <i class="fas fa-user"></i>
-                            Usuario:
-                            <span sec:authentication="name"></span>
-                        </a>
-                    </li>
-                    <li class="nav-item mr-3">
-                        <form method="POST" th:action="@{/logout}">
-                        <a href="#"
-                           onclick="this.parentNode.submit();"
-                           class="nav-link">
-                            <i class="fas fa-user-times"></i> Salir
-                        </a>
-                        </form>
-                    </li>
-                </ul>    
-            </div>
-            </div>
-                </nav>
-        
-        
-        <section id="main-header" class="py-2 bg-success text-white">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
-                        <h1>
-                            <i class="fas fa-cog"></i> Fide News
-                        </h1>
+            <nav class="navbar navbar-expand-sm py-3 md-1"  style="background-color:#E2413E;">
+
+                <div id="navegador">
+
+                    <ul class="navbar-nav" sec:authorize="hasRole('ROLE_USER')">
+                        
+                        <div class="container">
+                        <a th:href="@{/}" class="navbar-brand"><div>ㅤㅤㅤㅤ<img src="/img/fide News.png"  width="370"/></div></a>
                     </div>
-                </div> 
-            </div>
-        </section>
-            </header>
+                        
+                        <li class="nav-item px-2"  sec:authorize="hasRole('ROLE_ADMIN')">
+                            <div align="center">
+                            <a th:href="@{/usuario/listado}" class="nav-menu-link nav-link"><p style="color:#FFBF3B";><font face="Alfa Slab One">Usuarios registrados</font></p></a>
+                            </div>
+                        </li>
+
+                        <li class="nav-item px-2" sec:authorize="hasRole('ROLE_USER')">
+                            <div align="center">
+                            <a th:href="@{/noticias_nacionales/listado}" class="nav-menu-link nav-link"><p style="color:#FFBF3B";><font face="Alfa Slab One">Noticias Nacionales</font></p></a>
+                            </div>
+                        </li>
+
+                        <li class="nav-item px-2" sec:authorize="hasRole('ROLE_USER')">
+                            <div align="center">
+                            <a th:href="@{/noticias_internacionales/listado}" class="nav-menu-link nav-link"><p style="color:#FFBF3B";><font face="Alfa Slab One">Noticias Internacionales</font></p></a>
+                        </div>
+                        </li>
+
+                        <li class="nav-item mr-2">
+                            <div align="center">
+                            <a href="#" class="nav-link">
+                                
+                                <p style="color:#FFBF3B";><font face="Alfa Slab One">Usuario: </font><font face="Alfa Slab One"><span sec:authentication="name" style="color:#FFBF3B" ;></span></font></p>
+                              
+                            </a>
+                                 </div> 
+                        </li>
+
+                        <li class="nav-item mr-2">
+                            <div align="center">
+                            <form method="POST" th:action="@{/logout}">
+                                
+                                <a href="#"
+                                   onclick="this.parentNode.submit();"
+                                   class="nav-link">
+                                    <p style="color:#FFBF3B";><font face="Alfa Slab One">Salir</font></p>
+                                   
+                                </a>
+                                 </div>
+                            </form>
+                        </li>
+                    </ul>
+
+
+                </div>
+            </nav>
+
+
+        </header>
     </body>
 </html>

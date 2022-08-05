@@ -3,51 +3,69 @@
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:sec="http://thymeleaf.org/extras/spring-security">
     <head th:replace="layout/plantilla :: head">
-        <title>TechShop</title>        
+        <title>FideNews</title>        
+        <link href="css/styles.css" rel="stylesheet" type="text/css"/>
     </head>
-    <body>
-        <header th:replace="layout/plantilla :: header"/>
-        <section id="actions" class="py-4 md-4 bg-light">
-            <div class="container">
-                <div class="row">
-                </div>
-            </div>            
-        </section>
-        <section id="login">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 mx-auto">
-                        <div class="card">
-                            <div class="card-header">
-                                <h4>AUTENTICAR</h4>
-                            </div>
-                            <div class="card-body">
-                                <form method="POST" th:action="@{/login}">
-                                    <div class="row py-1 md-2 bg-light">
-                                        <div class="form-group">
-                                            <label for="username">USERNAME:</label>
-                                            <input type="text" name="username" id="username"/>
-                                        </div>
-                                    </div>
-                                    <div class="row py-1 md-2 bg-light">
-                                        <div class="form-group">
-                                            <label for="password">PASSWORD:</label>
-                                            <input type="password" name="password" id="password"/>
-                                        </div>
-                                    </div>
-                                    <div class="row py-1 md-2 bg-light">
-                                        <button 
-                                            type="submit" 
-                                            class="btn btn-primary btn-block">
-                                            AUTENTICAR
-                                        </button>
-                                    </div>                                    
-                                </form>                                
-                            </div>
+
+
+
+
+    <body style="background-color: #43a39f">
+        <header th:fragment="header" class="header"/>
+            <nav class="navbar navbar-expand-sm py-3 md-1"  style="background-color:#E2413E;">
+                <div class="container">
+                    <a th:href="@{/}" class="navbar-brand"><div >
+                            <img src="/img/fide News.png"  width="370"/>
                         </div>
-                    </div>
+                    </a>
                 </div>
-            </div>
-        </section>  
-    </body>
-</html>
+            </nav>
+
+
+
+            <br>
+                <br>
+                    <br>
+                        <br>
+                            <br>
+                                <br>
+                                    <section id="login">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-md-6 mx-auto">
+                                                    <div class="card">
+                                                        <div class="card-header">
+                                                            <h4><center><font face="Alfa Slab One,arial,verdana">Ingresar</font></center></h4>
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <form method="POST" th:action="@{/login}">
+                                                                <div class="row py-1 md-2 bg-light">
+                                                                    <div class="form-group">
+                                                                        <label for="username">ㅤUsuario:ㅤ</label>
+                                                                        <input type="text" name="username" id="username"/>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row py-1 md-2 bg-light">
+                                                                    <div class="form-group">
+                                                                        <label for="password">Contraseña:</label>
+                                                                        <input type="password" name="password" id="password"/>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row py-1 md-2 bg-light">
+                                                                    <button 
+                                                                        type="submit" 
+                                                                        class="btn btn-dark btn-block"
+                                                                        style="background-color: #FEFAD7">
+                                                                        <font color="#321E0F"> <font face="Alfa Slab One,arial,verdana">Vamos!</font></font>
+
+                                                                    </button>
+                                                                </div>                                    
+                                                            </form>                                
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>  
+                                    </body>
+                                    </html>

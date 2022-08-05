@@ -26,7 +26,7 @@ public class NacionalesServicelmpl implements NacionalesService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<Nacionales> getNacionaless() {
+    public List<Nacionales> getNacionales() {
         return (List<Nacionales>) nacionalesDao.findAll();
     }
 
@@ -45,7 +45,7 @@ public class NacionalesServicelmpl implements NacionalesService {
     @Override
     @Transactional(readOnly = true)
     public Nacionales getNacionales(Nacionales nacionales) {
-        return nacionalesDao.findById(nacionales.getIdNotinacionales()).orElse(null);
+        return nacionalesDao.findById(nacionales.getIdNotinacional()).orElse(null);
     }
     
 }

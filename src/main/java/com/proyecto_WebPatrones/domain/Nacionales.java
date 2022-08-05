@@ -26,7 +26,7 @@ public class Nacionales implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     
-    private Long idNotinacionales;
+    private Long idNotinacional;
     private String nombre;
     private String resumen;
     private String noticia;

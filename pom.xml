@@ -11,7 +11,7 @@
 	<groupId>com.proyecto_WebPatrones</groupId>
 	<artifactId>proyecto_WebPatrones</artifactId>
 	<version>1</version>
-	<name>proyecto_WebPatrones</name>
+	<name>proyecto_WebPatronesBeta</name>
 	<description>Proyecto del curso web y patrones</description>
 	<properties>
 		<java.version>1.8</java.version>

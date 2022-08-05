@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.proyecto_WebPatrones.controller;
 
 import com.proyecto_WebPatrones.domain.Usuario;
@@ -25,12 +20,12 @@ public class UsuarioController {
 
     @Autowired
     private UsuarioService usuarioservice;
-    
+
     @GetMapping("/usuario/listado")
     public String inicio(Model model){
 
         var usuarios = usuarioservice.getUsuarios();
-        
+
         model.addAttribute("usuarios",usuarios);
         return "/usuario/listado";
     }
@@ -38,25 +33,25 @@ public class UsuarioController {
     public String nuevoUsuario(Usuario usuario){
         return "usuario/modificar";
     }
-    
+
     @PostMapping("/usuario/guardar")
     public String guardarUsuario(Usuario usuario){
         usuarioservice.save(usuario);
         return "redirect:/usuario/listado";
     }
-    
+
     @GetMapping("/usuario/modificar/{idUsuario}")
     public String modificarUsuario(Usuario usuario, Model model){
         usuario=usuarioservice.getUsuario(usuario);
         model.addAttribute("usuario",usuario);
         return "usuario/modificar";
     }
-    
+
     @GetMapping("/usuario/eliminar/{idUsuario}")
     public String eliminarUsuario(Usuario usuario){
         usuarioservice.delete(usuario);
         return "redirect:/usuario/listado";
     }  
-    
-    
+
+
 }

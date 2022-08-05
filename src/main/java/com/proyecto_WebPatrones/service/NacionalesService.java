@@ -14,7 +14,7 @@ import java.util.List;
  */
 public interface NacionalesService {
     
-    public List<Nacionales> getNacionaless();
+    public List<Nacionales> getNacionales();
     
     public void save(Nacionales nacionales);
     

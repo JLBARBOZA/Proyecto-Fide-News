@@ -4,13 +4,44 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<html>
-    <head>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://thymeleaf.org/extras/spring-security">
+    <head th:replace="layout/plantilla :: head">
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
-    <body>
-        <div>TODO write content</div>
+    <body style="background-color: #43a39f">
+        <header th:replace="layout/plantilla :: header"/>
+        <div class="contenido">
+        <h2>Noticias Nacionales</h2>
+        <a th:href="@{/noticias_nacionales/nuevo}" sec:authorize="hasRole('ROLE_ADMIN')">Nueva Noticia Nacional</a>
+        <br/>
+        
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Titular</th>
+                    <th>Resumen de la Noticia</th>
+                    <th>Noticia</th>
+                    <th sec:authorize="hasRole('ROLE_ADMIN')">Eliminar</th>
+                    <th sec:authorize="hasRole('ROLE_ADMIN')">Modificar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="nacionales : ${nacionales}">
+                    <td th:text="${nacionales.nombre}"></td>
+                    <td th:text="${nacionales.resumen}"></td>
+                    <td th:text="${nacionales.noticia}"></td>
+
+                    <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/noticias_nacionales/eliminar/}+${nacionales.idNotinacional}" >Eliminar</a></td>
+                    <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/noticias_nacionales/modificar/}+${nacionales.idNotinacional}">Modificar</a></td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+
+        
     </body>
 </html>

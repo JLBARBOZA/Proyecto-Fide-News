@@ -4,13 +4,38 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://thymeleaf.org/extras/spring-security">
+    <head th:replace="layout/plantilla :: head">
+        <title>Fide News</title>
     </head>
-    <body>
-        <div>TODO write content</div>
+    <body style="background-color: #43a39f">
+        
+        <header th:replace="layout/plantilla :: header"/>
+        <div class="contenido">
+        <h2>Datos de la noticia Nacional</h2>
+        <a th:href="@{/noticias_nacionales/listado}">Regresar</a>
+        
+        <hr>
+        <form th:action="@{/noticias_nacionales/guardar}"
+              method="post"
+              th:object="${nacionales}">
+            <input type="hidden" name="idNotinacional" th:field="*{idNotinacional}"/>
+            
+            <label for="nombre">Nombre:</label>
+            <input type="text" name="nombre" th:field="*{nombre}"/>
+            <br>
+            <label for="resumen">Resumen:</label>
+            <input type="resumen" name="resumen" th:field="*{resumen}"/>
+            <br>
+            <label for="noticia">Noticia:</label>
+            <input type="text" name="noticia" th:field="*{noticia}"/>
+            
+            <hr>
+            <input type="submit" name="guardar" value="Guardar"/>
+        </form>
+        </div>
+        
     </body>
 </html>
