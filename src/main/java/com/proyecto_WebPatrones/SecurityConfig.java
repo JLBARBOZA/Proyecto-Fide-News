@@ -13,7 +13,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 
 /**
  *
- * @author Lamec
+ * @author tOLEDO
  */
 @Configuration
 @EnableWebSecurity
