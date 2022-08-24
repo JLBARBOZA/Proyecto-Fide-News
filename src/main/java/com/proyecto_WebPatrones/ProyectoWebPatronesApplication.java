@@ -9,5 +9,4 @@ public class ProyectoWebPatronesApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoWebPatronesApplication.class, args);
 	}
-
 }
