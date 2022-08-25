@@ -16,9 +16,9 @@ and open the template in the editor.
     <body>
         
         <div class="form-body">
-        <h2>Registro del nuevo Lector</h2>
+        <h2>[[#{usuarios.RegistrodelnuevoLector}]]</h2>
         <br>
-        <a th:href="@{/}"><input type="button" value="Regresar"></a>
+        <a th:href="@{/}"><input type="button" value="[[#{usuarios.regresar}]]"></a>
         <br>
         <hr>
         <form th:action="@{/usuario/guardar}"
@@ -26,26 +26,27 @@ and open the template in the editor.
               th:object="${usuario}">
             <input type="hidden" name="idUsuario" th:field="*{idUsuario}"/>
             <br>
-            <label for="nombre">Nombre de usuario:</label>
+            <label for="nombre">[[#{plantilla.Usuario}]]</label>
             <input type="text" name="nombre" th:field="*{nombre}"/>
             <br>
-            <label for="email">Correo Electronico:</label>
+            <label for="email">[[#{usuarios.Correoelectronico}]]</label>
             <input type="email" name="email" th:field="*{email}"/>
             <br>
-            <label for="contraseña">Detalle:</label>
+            <label for="contraseña">[[#{usuarios.contraseña}]]</label>
             <input type="password" name="contraseña" th:field="*{contraseña}"/>
             <br>
-            <label for="region">Region o Pais:</label>
+            <label for="region">[[#{usuarios.Regionopais}]]</label>
             <input type="text" name="region" th:field="*{region}"/>
             <br>
-            <label for="edad">Edad:</label>
+            <label for="edad">[[#{usuarios.Edad}]]</label>
             <input type="number" name="edad" th:field="*{edad}"/>
             <br>
             <hr>
             <br>
-            <input type="submit" name="guardar" value="Guardar"/>
+            <input type="submit" name="guardar" value="[[#{usuarios.guardar}]]"/>
             <br>
         </form>
         </div>
+        <footer th:replace="layout/plantilla :: footer"/>
     </body>
 </html>

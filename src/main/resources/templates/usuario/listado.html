@@ -10,19 +10,19 @@
     <body style="background-color: #43a39f">
         
         <header th:replace="layout/plantilla :: header"/>
-        <h2>Lista de usuarios registrados</h2>
+        <h2>[[#{usuarios.ListadeUsuariosRegistrados}]]</h2>
         <div>
-        <a>Usuarios registrados</a>
-        <a th:href="@{/usuario/nuevo}">Agregar un usuario</a>
+        <a>[[#{usuarios.resgistrados}]]</a>
+        <a th:href="@{/usuario/nuevo}">[[#{usuarios.AgregarUsuario}]]</a>
         <table border="1">
             <thead>
                 <tr>
-                    <th>Nombre de Usuario</th>
+                    <th>[[#{usuarios.NombredeUsuario}]]</th>
                     <th>Email</th>
                     <th>Region</th>
-                    <th>Edad</th>
-                    <th>Eliminar</th>
-                    <th>Modificar</th>
+                    <th>[[#{usuarios.Edad}]]</th>
+                    <th>[[#{nacional.Eliminar}]]</th>
+                    <th>[[#{nacional.Modificar}]]</th>
                     
                 </tr>
             </thead>
@@ -33,13 +33,13 @@
                     <td th:text="${usuario.region}"></td>
                     <td th:text="${usuario.edad}"></td>
                     
-                    <td><a th:href="@{/usuario/eliminar/}+${usuario.idUsuario}">Eliminar</a></td>
-                    <td><a th:href="@{/usuario/modificar/}+${usuario.idUsuario}">Modificar</a></td>
+                    <td><a th:href="@{/usuario/eliminar/}+${usuario.idUsuario}">[[#{nacional.Eliminar}]]</a></td>
+                    <td><a th:href="@{/usuario/modificar/}+${usuario.idUsuario}">[[#{nacional.Modificar}]]</a></td>
 
                 </tr>
             </tbody>
         </table>
         </div>
-        
+        <footer th:replace="layout/plantilla :: footer"/>
     </body>
 </html>
