@@ -14,8 +14,8 @@ and open the template in the editor.
         
         <header th:replace="layout/plantilla :: header"/>
         <div class="contenido">
-        <h2>Datos de la noticia Nacional</h2>
-        <a th:href="@{/noticias_nacionales/listado}">Regresar</a>
+        <h2>[[#{nacional.datos}]]</h2>
+        <a th:href="@{/noticias_nacionales/listado}">[[#{nacional.regresar}]]</a>
         
         <hr>
         <form th:action="@{/noticias_nacionales/guardar}"
@@ -23,19 +23,19 @@ and open the template in the editor.
               th:object="${nacionales}">
             <input type="hidden" name="idNotinacional" th:field="*{idNotinacional}"/>
             
-            <label for="nombre">Nombre:</label>
+            <label for="nombre">[[#{nacional.Nombre}]]</label>
             <input type="text" name="nombre" th:field="*{nombre}"/>
             <br>
-            <label for="resumen">Resumen:</label>
+            <label for="resumen">[[#{nacional.Resumen}]]</label>
             <input type="resumen" name="resumen" th:field="*{resumen}"/>
             <br>
-            <label for="noticia">Noticia:</label>
+            <label for="noticia">[[#{nacional.Noticia}]]</label>
             <input type="text" name="noticia" th:field="*{noticia}"/>
             
             <hr>
             <input type="submit" name="guardar" value="Guardar"/>
         </form>
         </div>
-        
+        <footer th:replace="layout/plantilla :: footer"/>
     </body>
 </html>
