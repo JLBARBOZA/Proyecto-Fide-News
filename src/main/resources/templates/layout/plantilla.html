@@ -8,7 +8,7 @@ and open the template in the editor.
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:sec="http://thymeleaf.org/extras/spring-security">
     <head th:fragment="head">
-        <title>TechShop</title>
+        <title>FideNews</title>
         <meta charset="UTF-8"/>
         <link rel="stylesheet" 
               th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
@@ -27,51 +27,49 @@ and open the template in the editor.
                 <div id="navegador">
 
                     <ul class="navbar-nav" sec:authorize="hasRole('ROLE_USER')">
-                        
+
                         <div class="container">
-                        <a th:href="@{/}" class="navbar-brand"><div>ㅤㅤㅤㅤ<img src="/img/fide News.png"  width="370"/></div></a>
-                    </div>
-                        
+                            <a th:href="@{/}" class="navbar-brand"><div>ㅤㅤㅤㅤ<img src="/img/fide News.png"  width="370"/></div></a>
+                        </div>
+
                         <li class="nav-item px-2"  sec:authorize="hasRole('ROLE_ADMIN')">
                             <div align="center">
-                            <a th:href="@{/usuario/listado}" class="nav-menu-link nav-link"><p style="color:#FFBF3B";><font face="Alfa Slab One">Usuarios registrados</font></p></a>
+                                <a th:href="@{/usuario/listado}" class="nav-menu-link nav-link"><p style="color:#FFBF3B";><font face="Alfa Slab One">[[#{plantilla.Usuariosregistrados}]]</font></p></a>
                             </div>
                         </li>
 
                         <li class="nav-item px-2" sec:authorize="hasRole('ROLE_USER')">
                             <div align="center">
-                            <a th:href="@{/noticias_nacionales/listado}" class="nav-menu-link nav-link"><p style="color:#FFBF3B";><font face="Alfa Slab One">Noticias Nacionales</font></p></a>
+                                <a th:href="@{/noticias_nacionales/listado}" class="nav-menu-link nav-link"><p style="color:#FFBF3B";><font face="Alfa Slab One">[[#{plantilla.NoticiasNacionales}]]</font></p></a>
                             </div>
                         </li>
 
                         <li class="nav-item px-2" sec:authorize="hasRole('ROLE_USER')">
                             <div align="center">
-                            <a th:href="@{/noticias_internacionales/listado}" class="nav-menu-link nav-link"><p style="color:#FFBF3B";><font face="Alfa Slab One">Noticias Internacionales</font></p></a>
-                        </div>
+                                <a th:href="@{/noticias_internacionales/listado}" class="nav-menu-link nav-link"><p style="color:#FFBF3B";><font face="Alfa Slab One">[[#{plantilla.NoticiasInternacionales}]]</font></p></a>
+                            </div>
                         </li>
 
                         <li class="nav-item mr-2">
                             <div align="center">
-                            <a href="#" class="nav-link">
-                                
-                                <p style="color:#FFBF3B";><font face="Alfa Slab One">Usuario: </font><font face="Alfa Slab One"><span sec:authentication="name" style="color:#FFBF3B" ;></span></font></p>
-                              
-                            </a>
-                                 </div> 
-                        </li>
+                                <a href="#" class="nav-link">
 
-                        <li class="nav-item mr-2">
-                            <div align="center">
-                            <form method="POST" th:action="@{/logout}">
-                                
-                                <a href="#"
-                                   onclick="this.parentNode.submit();"
-                                   class="nav-link">
-                                    <p style="color:#FFBF3B";><font face="Alfa Slab One">Salir</font></p>
-                                   
+                                    <p style="color:#FFBF3B";><font face="Alfa Slab One">[[#{plantilla.Usuario}]] </font><font face="Alfa Slab One"><span sec:authentication="name" style="color:#FFBF3B" ;></span></font></p>
+
                                 </a>
-                                 </div>
-                            </form>
+                            </div> 
+                        </li>
+
+                        <li class="nav-item mr-2">
+                            <div align="center">
+                                <form method="POST" th:action="@{/logout}">
+
+                                    <a href="#"
+                                       onclick="this.parentNode.submit();"
+                                       class="nav-link">
+                                        <p style="color:#FFBF3B";><font face="Alfa Slab One">[[#{plantilla.Salir}]]</font></p></a>
+                            </div>
+                            
                         </li>
                     </ul>
 
@@ -81,5 +79,15 @@ and open the template in the editor.
 
 
         </header>
+        <footer th:fragment="footer" class="bg-danger text-white mt-5 p-2">
+            <div class="container">
+                <div class="col">
+                    <p class="lead text-center">&COPY [[#{plantilla.derechos}]] |
+                        <a th:href="@{/(lang=es)}">ESPAÑOL</a> |
+                        <a th:href="@{/(lang=en)}">ENGLISH</a>
+                    </p>
+                </div>    
+            </div>
+        </footer>
     </body>
 </html>
