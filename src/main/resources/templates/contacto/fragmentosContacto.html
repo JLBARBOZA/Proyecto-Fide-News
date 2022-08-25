@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://thymeleaf.org/extras/spring-security">
+    <head th:replace="layout/plantilla :: head">
+        <title>Fide News</title>
+    </head>
+    <body>
+        <section th:fragment="botonesAgregar" class="py-4 mb-4 bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3" sec:authorize="hasRole('ROLE_ADMIN')">
+                        <button type="button"
+                                class="btn btn-primary btn-block"
+                                data-bs-toggle="modal"
+                                data-bs-target="#agregarContactos">
+                            <i class="fas fa-plus"></i> [[#{accion.agregar}]]
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section th:fragment="listadoContactos" id="contacto">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>[[#{contacto.titulo}]]</h4>
+                            </div>
+                            <div class="card-body">
+
+                                <div th:if="${contactos != null and !contactos.empty}">
+                                    <table class="table table-striped">
+                                        <thead class="bg-dark text-white">
+                                            <tr>
+                                               
+                                                <th>[[#{contactos.nombre}]]</th>
+                                                <th>[[#{contactos.informacion}]]</th>
+                                                <th>[[#{contactos.facebook}]]</th>
+                                                <th>[[#{contactos.email}]]</th>
+                                                <th></th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr th:each="contactos: ${contactos}">
+                                                
+                                                <td>[[${contactos.nombre}]]</td>
+                                                <td>[[${contactos.informacion}]]</td>
+                                                <td>[[#{contactos.facebook}]]</td>
+                                                <td>[[#{contactos.email}]]</td>
+                                                
+                                                <td sec:authorize="hasRole('ROLE_ADMIN')">
+                                                    <a th:href="@{/contacto/eliminar/}+${contactos.idContacto}" class='btn btn-danger'>
+                                                        <i class="fas fa-trash"></i>  [[#{accion.eliminar}]]
+                                                    </a>
+                                                </td>
+                                                <td sec:authorize="hasRole('ROLE_ADMIN')">
+                                                    <a th:href="@{/contacto/modificar/}+${contactos.idContacto}" class='btn btn-success'>
+                                                        <i class="fas fa-pencil"></i> [[#{accion.actualizar}]]
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div th:if="${contactos == null or contactos.empty}">
+                                    No tenemos lista de contactos que mostrar...
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+
+                </div>
+            </div>
+        </section>
+
+        <section th:fragment="agregarContactos">
+            <div id="agregarContactos" class="modal fade" tabindex="-1">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header bg-info text-white">
+                            <h5 class="modal-title">[[#{accion.agregar}]]</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <form th:action="@{/contacto/guardar}"
+                              method="post"
+                              class="was-validated">
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="nombre">[[#{contactos.nombre}]]</label>
+                                    <input type="text" name="nombre" class="form-control" required="true"/>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="informacion">[[#{contactos.informacion}]]</label>
+                                    <input type="text" name="informacion" class="form-control" required="true"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="facebook">[[#{contactos.facebook}]]</label>
+                                    <input type="text" name="facebook" class="form-control" required="true"/>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="email">[[#{contactos.email}]]</label>
+                                    <input type="email" name="email" class="form-control" required="true"/>
+                                </div>
+                                
+                                <div class="modal-footer">
+                                    <button class="btn btn-primary" type="submit" name="guardar">
+                                        <i class="fas fa-save"></i> [[#{accion.guardar}]]
+                                    </button>
+                                </div>                                
+                            </div>
+                        </form>
+                    </div>                    
+                </div>
+            </div>
+        </section>
+    </body>
+</html>

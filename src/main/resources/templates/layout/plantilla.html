@@ -71,6 +71,18 @@ and open the template in the editor.
                             </div>
                             
                         </li>
+                        
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <li><a class="dropdown-item" th:href="@{/membresias/listado}">[[#{membresias.titulo}]]</a></li>
+                                <li><a class="dropdown-item" th:href="@{/chat/listado}">[[#{chat.titulo}]]</a></li>
+                                <li><a class="dropdown-item" th:href="@{/contacto/listado}">[[#{contacto.titulo}]]</a></li>
+                                <li><a class="dropdown-item" th:href="@{/anuncios/listado}">[[#{anuncios.titulo}]]</a></li>
+                            </ul>
+                        </div>
+                        
                     </ul>
 
 

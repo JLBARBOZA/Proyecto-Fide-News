@@ -26,7 +26,7 @@ public class Membresias implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idMembresias;
+    private Long idMembresia;
     private String nombre;
     private String descripcion;
 

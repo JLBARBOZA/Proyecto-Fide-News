@@ -43,7 +43,7 @@ public class MembresiasServicelmpl implements MembresiasService {
     @Override
     @Transactional(readOnly = true)
     public Membresias getMembresias(Membresias membresias) {
-        return membresiasDao.findById(membresias.getIdMembresias()).orElse(null);
+        return membresiasDao.findById(membresias.getIdMembresia()).orElse(null);
     }
     
 }

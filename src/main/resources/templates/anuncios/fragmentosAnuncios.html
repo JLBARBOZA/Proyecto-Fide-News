@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://thymeleaf.org/extras/spring-security">
+    <head th:replace="layout/plantilla :: head">
+        <title>TechShop</title>
+    </head>
+    <body>
+        <section th:fragment="botonesAgregar" class="py-4 mb-4 bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3" sec:authorize="hasRole('ROLE_ADMIN')">
+                        <button type="button"
+                                class="btn btn-primary btn-block"
+                                data-bs-toggle="modal"
+                                data-bs-target="#agregarAnuncios">
+                            <i class="fas fa-plus"></i> [[#{accion.agregar}]]
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section th:fragment="listadoAnuncios" id="anuncios">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>[[#{anuncios.titulo}]]</h4>
+                            </div>
+                            <div class="card-body">
+
+                                <div th:if="${anuncios != null and !anuncios.empty}">
+                                    <table class="table table-striped">
+                                        <thead class="bg-dark text-white">
+                                            <tr>
+                                                <th>#</th>
+                                                <th>[[#{anuncios.nombre}]]</th>
+                                                <th>[[#{anuncios.descripcion}]]</th>
+                                                <th>[[#{anuncios.imagen}]]</th>
+                                                <th></th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr th:each="anuncios: ${anuncios}">
+                                                
+                                                <td>[[${anuncios.nombre}]] [[${anuncios.descripcion}]] [[#{anuncios.imagen}]]</td>
+                                                
+                                                <td sec:authorize="hasRole('ROLE_ADMIN')">
+                                                    <a th:href="@{/anuncios/eliminar/}+${anuncios.idAnuncio}" class='btn btn-danger'>
+                                                        <i class="fas fa-trash"></i>  [[#{accion.eliminar}]]
+                                                    </a>
+                                                </td>
+                                                <td sec:authorize="hasRole('ROLE_ADMIN')">
+                                                    <a th:href="@{/anuncios/modificar/}+${anuncios.idAnuncio}" class='btn btn-success'>
+                                                        <i class="fas fa-pencil"></i> [[#{accion.actualizar}]]
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div th:if="${anuncios == null or anuncios.empty}">
+                                    No tenemos lista de anuncios que mostrar...
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+
+                </div>
+            </div>
+        </section>
+
+        <section th:fragment="agregarAnuncios">
+            <div id="agregarAnuncios" class="modal fade" tabindex="-1">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header bg-info text-white">
+                            <h5 class="modal-title">[[#{accion.agregar}]]</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <form th:action="@{/anuncios/guardar}"
+                              method="post"
+                              class="was-validated">
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="nombre">[[#{anuncios.nombre}]]</label>
+                                    <input type="text" name="nombre" class="form-control" required="true"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="descripcion">[[#{anuncios.descripcion}]]</label>
+                                    <input type="text" name="descripcion"  class="form-control" required="true"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="imagen">[[#{anuncios.imagen}]]</label>
+                                    <input type="text" name="imagen" class="form-control" required="true"/>
+                                </div>
+                                
+                                <div class="modal-footer">
+                                    <button class="btn btn-primary" type="submit" name="guardar">
+                                        <i class="fas fa-save"></i> [[#{accion.guardar}]]
+                                    </button>
+                                </div>                                
+                            </div>
+                        </form>
+                    </div>                    
+                </div>
+            </div>
+        </section>
+    </body>
+</html>

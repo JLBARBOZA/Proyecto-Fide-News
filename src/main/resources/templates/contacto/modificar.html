@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://thymeleaf.org/extras/spring-security">
+    <head th:replace="layout/plantilla :: head">
+        <title>Fide News</title>
+    </head>
+    <body>
+        
+        <header th:replace="layout/plantilla :: header"/>
+        <div class="contenido">
+        <h2>Datos de Contacto</h2>
+        <a th:href="@{/contacto/listado}">Regresar</a>
+        
+        <hr>
+        <form th:action="@{/contacto/guardar}"
+              method="post"
+              th:object="${contacto}">
+            <input type="hidden" name="idContacto" th:field="*{idContacto}"/>
+
+            
+
+            <label for="nombre">[[#{contactos.nombre}]]</label>
+            <input type="text" name="nombre" th:field="*{nombre}"/>
+            <br>
+            <label for="informacion">[[#{contactos.informacion}]]</label>
+            <input type="text" name="informacion" th:field="*{informacion}"/>
+            <br>
+            <label for="facebook">[[#{contactos.facebook}]]</label>
+            <input type="text" name="facebook" th:field="*{facebook}"/>
+            <br>
+            <label for="email">[[#{contactos.email}]]</label>
+            <input type="email" name="email" th:field="*{email}"/>
+            <br>   
+            <hr>
+            <input type="submit" name="guardar" value="Guardar"/>
+        </form>
+        </div>
+    </body>
+</html>
