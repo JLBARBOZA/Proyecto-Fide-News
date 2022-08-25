@@ -1,9 +1,4 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:sec="http://thymeleaf.org/extras/spring-security">
@@ -14,35 +9,70 @@ and open the template in the editor.
     </head>
     <body style="background-color: #43a39f">
         <header th:replace="layout/plantilla :: header"/>
-        <div class="contenido">
-        <h2>[[#{internacional.Internacional}]]</h2>
-        <a th:href="@{/noticias_internacionales/nuevo}" sec:authorize="hasRole('ROLE_ADMIN')">[[#{internacional.NuevaNoticiaInternacional}]]</a>
-        <br/>
         
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>[[#{nacional.Titular}]]</th>
-                    <th>[[#{nacional.ResumendelaNoticia}]]</th>
-                    <th>[[#{nacional.Noticia}]]</th>
-                    <th sec:authorize="hasRole('ROLE_ADMIN')">[[#{nacional.Eliminar}]]</th>
-                    <th sec:authorize="hasRole('ROLE_ADMIN')">[[#{nacional.Modificar}]]</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="internacionales : ${internacionales}">
-                    <td th:text="${internacionales.nombre}"></td>
-                    <td th:text="${internacionales.resumen}"></td>
-                    <td th:text="${internacionales.noticia}"></td>
+       
+         <div class="contenido">
+<br/>
+<br/>
 
-                    <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/noticias_internacionales/eliminar/}+${internacionales.idNotiinternacional}">[[#{nacional.Eliminar}]]</a></td>
-                    <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/noticias_internacionales/modificar/}+${internacionales.idNotiinternacional}">[[#{nacional.Modificar}]]</a></td>
-                </tr>
-            </tbody>
-        </table>
-        </div>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h4>
+                                                [[#{internacional.Internacional}]]ㅤㅤㅤ<td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/noticias_internacionales/nuevo}" class="btn btn-success "  ><i class='fas fa-newspaper'></i>[[#{internacional.NuevaNoticiaInternacional}]]</a></td>
+                                            </h4>
+
+                                        </div>
+
+                                        <div class="card-body">
+
+
+                                            <div th:if="${internacionales  != null and !internacionales.empty}">
+                                                <table class="table table-striped">
+                                                    <thead class="bg-danger text-white">
+                                                        <tr>
+
+                                                            <th>[[#{nacional.Titular}]]</th>
+                                                            <th>[[#{nacional.ResumendelaNoticia}]]</th>
+                                                            <th>[[#{nacional.Noticia}]]</th>
+                                                            <th></th>
+                                                            <th></th>
+
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr th:each="internacionales,contador : ${internacionales}">
+                                                            <td>[[${internacionales.nombre}]]</td>
+                                                            <td>[[${internacionales.resumen}]]</td>
+
+                                                            <td>[[${internacionales.noticia}]]</td>
+
+
+                                                            <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/noticias_internacionales/eliminar/}+${internacionales.idNotiinternacional}" class="btn btn-danger"><i class='fas fa-trash'></i> [[#{nacional.Eliminar}]]</a></td>
+                                                            <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/noticias_internacionales/modificar/}+${internacionales.idNotiinternacional}"class="btn btn-primary"><i class='fas fa-pencil'></i> [[#{nacional.Modificar}]]</a></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div th:if="${internacionales == null or internacionales.empty}">
+                                                No tenemos lista de Noticias que mostrar...
+                                            </div>
+                                        </div>
+                                        </did>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+                    </div>
 
        <footer th:replace="layout/plantilla :: footer"/> 
     </body>
 </html>
+
 
