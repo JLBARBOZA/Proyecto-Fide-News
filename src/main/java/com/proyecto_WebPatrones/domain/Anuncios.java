@@ -6,6 +6,7 @@
 package com.proyecto_WebPatrones.domain;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,10 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import lombok.Data;
 
-/**
- *
- * @author Lamec
- */
+
 @Data
 @Entity
 @Table(name="anuncios")
@@ -29,15 +27,16 @@ public class Anuncios implements Serializable {
     private Long idAnuncio;
     private String nombre;
     private String descripcion;
-    private String imagen;
-
+    
+@Column (name="imagen")
+private String imagen;
 
     public Anuncios() {
     }
 
-    public Anuncios(String nombre, String descripcion, String imagen) {
+    public Anuncios(String nombre, String descripcion) {
         this.nombre = nombre;
         this.descripcion = descripcion;
-        this.imagen = imagen;
+        
     }
 }

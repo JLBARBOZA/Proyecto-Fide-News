@@ -8,38 +8,83 @@
         <title>Inicio Fide News</title>
     </head>
     <body style="background-color: #43a39f">
-        
-        <header th:replace="layout/plantilla :: header"/>
-        <h2>[[#{usuarios.ListadeUsuariosRegistrados}]]</h2>
-        <div>
-        <a>[[#{usuarios.resgistrados}]]</a>
-        <a th:href="@{/usuario/nuevo}">[[#{usuarios.AgregarUsuario}]]</a>
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>[[#{usuarios.NombredeUsuario}]]</th>
-                    <th>Email</th>
-                    <th>Region</th>
-                    <th>[[#{usuarios.Edad}]]</th>
-                    <th>[[#{nacional.Eliminar}]]</th>
-                    <th>[[#{nacional.Modificar}]]</th>
-                    
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="usuario : ${usuarios}">
-                    <td th:text="${usuario.nombre}"></td>
-                    <td th:text="${usuario.email}"></td>
-                    <td th:text="${usuario.region}"></td>
-                    <td th:text="${usuario.edad}"></td>
-                    
-                    <td><a th:href="@{/usuario/eliminar/}+${usuario.idUsuario}">[[#{nacional.Eliminar}]]</a></td>
-                    <td><a th:href="@{/usuario/modificar/}+${usuario.idUsuario}">[[#{nacional.Modificar}]]</a></td>
 
-                </tr>
-            </tbody>
-        </table>
+        <header th:replace="layout/plantilla :: header"/>
+        
+
+        <div class="contenido">
+            <br/>
+            <br/>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>
+                                    [[#{usuarios.ListadeUsuariosRegistrados}]]ㅤㅤㅤ<td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/usuario/nuevo}" class="btn btn-success "  ><i class='fas fa-user-astronaut'></i>[[#{usuarios.AgregarUsuario}]]</a></td>
+                                </h4>
+
+                            </div>
+
+                            <div class="card-body">
+
+
+                                <div th:if="${usuarios  != null and !usuarios.empty}">
+                                    <table class="table table-striped">
+                                        <thead class="bg-danger text-white">
+                                            <tr>
+
+                                                <th>[[#{usuarios.NombredeUsuario}]]</th>
+                                                <th>Email</th>
+                                                <th>Region</th>
+                                                <th>[[#{usuarios.Edad}]]</th>
+                                                <th>[[#{nacional.Eliminar}]]</th>
+                                                <th>[[#{nacional.Modificar}]]</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr th:each="usuario,contador : ${usuarios}">
+                                                <td>[[${usuario.nombre}]]</td>
+                                                <td>[[${usuario.email}]]</td>
+
+                                                <td>[[${usuario.region}]]</td>
+                                                <td>[[${usuario.edad}]]</td>
+
+
+                                                <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/usuario/eliminar/}+${usuario.idUsuario}" class="btn btn-danger"><i class='fas fa-trash'></i> [[#{nacional.Eliminar}]]</a></td>
+                                                <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/usuario/modificar/}+${usuario.idUsuario}"class="btn btn-primary"><i class='fas fa-pencil'></i> [[#{nacional.Modificar}]]</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div th:if="${usuarios == null or usuarios.empty}">
+                                    No tenemos lista de Usuarios que mostrar...
+                                </div>
+                            </div>
+                            </did>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
         </div>
+
+
+
+
+
+
+
+
+
+
+
+
         <footer th:replace="layout/plantilla :: footer"/>
     </body>
 </html>

@@ -22,6 +22,7 @@ and open the template in the editor.
     <body>
 
         <header th:fragment="header" class="header">
+            
             <nav class="navbar navbar-expand-sm py-3 md-1"  style="background-color:#E2413E;">
 
                 <div id="navegador">
@@ -30,6 +31,7 @@ and open the template in the editor.
 
                         <div class="container">
                             <a th:href="@{/}" class="navbar-brand"><div>ㅤㅤㅤㅤ<img src="/img/fide News.png"  width="370"/></div></a>
+                            
                         </div>
 
                         <li class="nav-item px-2"  sec:authorize="hasRole('ROLE_ADMIN')">

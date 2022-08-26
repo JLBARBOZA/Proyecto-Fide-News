@@ -5,11 +5,11 @@
     <head th:replace="layout/plantilla :: head">
         <title>TechShop</title>
     </head>
-    <body>
-        <section th:fragment="botonesAgregar" class="py-4 mb-4 bg-light">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3" sec:authorize="hasRole('ROLE_ADMIN')">
+    <body style="background-color: #43a39f">
+        <section th:fragment="botonesAgregar" class="py-4 mb-4" style="background-color: #43a39f">
+            <div class="container" style="background-color: #43a39f">
+                <div class="row" style="background-color: #43a39f">
+                    <div class="col-md-3" sec:authorize="hasRole('ROLE_ADMIN')" style="background-color: #43a39f">
                         <button type="button"
                                 class="btn btn-primary btn-block"
                                 data-bs-toggle="modal"
@@ -35,7 +35,7 @@
                                     <table class="table table-striped">
                                         <thead class="bg-dark text-white">
                                             <tr>
-                                                <th>#</th>
+                                                
                                                 <th>[[#{anuncios.nombre}]]</th>
                                                 <th>[[#{anuncios.descripcion}]]</th>
                                                 <th>[[#{anuncios.imagen}]]</th>
@@ -46,7 +46,10 @@
                                         <tbody>
                                             <tr th:each="anuncios: ${anuncios}">
                                                 
-                                                <td>[[${anuncios.nombre}]] [[${anuncios.descripcion}]] [[#{anuncios.imagen}]]</td>
+                                                    
+                                                <td>[[${anuncios.nombre}]]</td>
+                                                <td>[[${anuncios.descripcion}]]</td>
+                                                <td><img th:src="@{${anuncios.imagen}}" width="120"/></td>
                                                 
                                                 <td sec:authorize="hasRole('ROLE_ADMIN')">
                                                     <a th:href="@{/anuncios/eliminar/}+${anuncios.idAnuncio}" class='btn btn-danger'>
@@ -75,8 +78,8 @@
             </div>
         </section>
 
-        <section th:fragment="agregarAnuncios">
-            <div id="agregarAnuncios" class="modal fade" tabindex="-1">
+        <section th:fragment="agregarAnuncios" >
+            <div id="agregarAnuncios" class="modal fade" tabindex="-1" >
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header bg-info text-white">
